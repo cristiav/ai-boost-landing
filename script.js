@@ -8,13 +8,30 @@ e.preventDefault();
 
 const email = document.getElementById("email").value;
 
+const params = {
+user_email: email
+};
+
+/* CORREO AL USUARIO */
+
 emailjs.send(
 "service_zsayibw",
 "template_p4f3ufg",
-{
-user_email: email
-}
+params
 )
+
+/* CORREO PARA USTEDES */
+
+.then(function(){
+
+return emailjs.send(
+"service_zsayibw",
+"template_fztjbj4",
+params
+);
+
+})
+
 .then(function(){
 
 document.getElementById("message").innerHTML =
@@ -23,6 +40,7 @@ document.getElementById("message").innerHTML =
 form.reset();
 
 })
+
 .catch(function(error){
 
 document.getElementById("message").innerHTML =
