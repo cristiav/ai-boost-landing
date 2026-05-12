@@ -1,53 +1,43 @@
+// Inicializar EmailJS
 emailjs.init("K2pa3BHW30Mc7Sx9L");
 
 const form = document.getElementById("subscribe-form");
+const messageEl = document.getElementById("message");
 
 form.addEventListener("submit", function(e){
+  e.preventDefault();
 
-e.preventDefault();
+  const email = document.getElementById("email").value.trim();
 
-const email = document.getElementById("email").value;
+  if(!email){
+    messageEl.textContent = "❌ Por favor ingresa un correo válido.";
+    return;
+  }
 
-const params = {
-user_email: email
-};
+  const params = { user_email: email };
 
-/* CORREO AL USUARIO */
+  // Enviar correo al usuario
+  emailjs.send("service_zsayibw", "template_fztjbj4", params)
+    .then(function(){
+      console.log("Correo de bienvenida enviado al usuario ✅");
 
-emailjs.send(
-"service_zsayibw",
-"template_fztjbj4",
-params
-)
+      // Mensaje de confirmación al usuario
+      messageEl.textContent = "✅ Suscripción exitosa. Revisa tu correo.";
 
-/* CORREO PARA USTEDES */
+    })
+    .catch(function(error){
+      console.error("Error al enviar correo al usuario:", error);
+      messageEl.textContent = "❌ Error al enviar correo al usuario.";
+    });
 
-.then(function(){
+  // Enviar correo al admin (independiente)
+  emailjs.send("service_zsayibw", "template_p4f3ufg", params)
+    .then(function(){
+      console.log("Notificación enviada al admin ✅");
+    })
+    .catch(function(error){
+      console.error("Error al enviar correo al admin:", error);
+    });
 
-return emailjs.send(
-"service_zsayibw",
-"template_p4f3ufg",
-params
-);
-
-})
-
-.then(function(){
-
-document.getElementById("message").innerHTML =
-"✅ Suscripción exitosa. Revisa tu correo.";
-
-form.reset();
-
-})
-
-.catch(function(error){
-
-document.getElementById("message").innerHTML =
-"❌ Error al enviar.";
-
-console.log(error);
-
-});
-
+  form.reset();
 });
