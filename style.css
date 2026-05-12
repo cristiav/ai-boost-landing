@@ -2,72 +2,95 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Arial, sans-serif;
 }
 
 body{
-background:#0f172a;
-color:white;
-min-height:100vh;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-padding:20px;
+
+/* 👇 IMAGEN DE FONDO */
+background-image:url("https://www.zoho.com/es-xl/landingpage/");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+position:relative;
 }
 
+/* 👇 CAPA OSCURA (IMPORTANTE PARA LEGIBILIDAD) */
+body::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:0;
+}
+
+/* CONTENEDOR */
 .hero{
+position:relative;
+z-index:1;
 width:100%;
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
+/* TARJETA */
 .card{
-background:#111827;
+background:rgba(17,24,39,0.85);
+backdrop-filter:blur(10px);
 padding:50px;
-border-radius:24px;
-max-width:500px;
-width:100%;
+border-radius:20px;
+max-width:450px;
+width:90%;
 text-align:center;
-box-shadow:0 15px 40px rgba(0,0,0,.4);
-border:1px solid rgba(255,255,255,.05);
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+border:1px solid rgba(255,255,255,0.1);
 }
 
+/* TITULO */
 h1{
 font-size:42px;
-margin-bottom:20px;
+color:white;
+margin-bottom:15px;
 }
 
+/* TEXTO */
 p{
 color:#cbd5e1;
-line-height:1.7;
-margin-bottom:30px;
+margin-bottom:25px;
+line-height:1.6;
 }
 
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
+/* INPUT */
 input{
-padding:16px;
+width:100%;
+padding:15px;
 border:none;
-border-radius:12px;
+border-radius:10px;
+margin-bottom:15px;
 font-size:16px;
 outline:none;
 }
 
+/* BOTÓN */
 button{
-padding:16px;
+width:100%;
+padding:15px;
 background:#6366f1;
 color:white;
 border:none;
-border-radius:12px;
+border-radius:10px;
 font-size:16px;
 cursor:pointer;
-transition:.3s;
 font-weight:bold;
+transition:0.3s;
 }
 
 button:hover{
@@ -75,31 +98,22 @@ background:#4f46e5;
 transform:translateY(-2px);
 }
 
+/* MENSAJE */
+#message{
+margin-top:15px;
+color:#22c55e;
+font-weight:bold;
+}
+
+/* FEATURES */
 .features{
-margin-top:30px;
+margin-top:25px;
 list-style:none;
 text-align:left;
 }
 
 .features li{
-margin-bottom:12px;
-color:#d1d5db;
-}
-
-#message{
-margin-top:20px;
-font-weight:bold;
-color:#22c55e;
-}
-
-@media(max-width:600px){
-
-.card{
-padding:35px;
-}
-
-h1{
-font-size:32px;
-}
-
+color:#e5e7eb;
+margin-bottom:8px;
+font-size:14px;
 }
