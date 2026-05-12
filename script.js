@@ -16,7 +16,7 @@ user_email: email
 
 emailjs.send(
 "service_zsayibw",
-"template_p4f3ufg",
+"template_fztjbj4",
 params
 )
 
@@ -26,7 +26,7 @@ params
 
 return emailjs.send(
 "service_zsayibw",
-"template_fztjbj4",
+"template_p4f3ufg",
 params
 );
 
