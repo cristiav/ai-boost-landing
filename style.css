@@ -2,7 +2,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family: system-ui, -apple-system, Arial, sans-serif;
 }
 
 body{
@@ -10,110 +10,144 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+position:relative;
+overflow:hidden;
 
-/* 👇 IMAGEN DE FONDO */
+/* fondo más limpio y moderno */
 background-image:url("https://www.zohowebstatic.com/sites/zweb/images/landingpage/home/template-2.png");
 background-size:cover;
 background-position:center;
-background-repeat:no-repeat;
-position:relative;
 }
 
-/* 👇 CAPA OSCURA (IMPORTANTE PARA LEGIBILIDAD) */
+/* overlay más elegante (gradiente en vez de negro plano) */
 body::before{
 content:"";
 position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.65);
-z-index:0;
+inset:0;
+background:linear-gradient(
+135deg,
+rgba(10,15,30,0.85),
+rgba(2,6,23,0.75)
+);
+backdrop-filter: blur(4px);
 }
 
-/* CONTENEDOR */
+/* contenedor */
 .hero{
 position:relative;
-z-index:1;
+z-index:2;
 width:100%;
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
-/* TARJETA */
+/* tarjeta estilo SaaS moderno */
 .card{
-background:rgba(17,24,39,0.85);
-backdrop-filter:blur(10px);
-padding:50px;
-border-radius:20px;
-max-width:450px;
-width:90%;
+width:380px;
+padding:36px;
+
+background:rgba(255,255,255,0.08);
+backdrop-filter: blur(18px);
+
+border:1px solid rgba(255,255,255,0.15);
+border-radius:18px;
+
+box-shadow:0 25px 80px rgba(0,0,0,0.55);
+
 text-align:center;
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-border:1px solid rgba(255,255,255,0.1);
-}
-
-/* TITULO */
-h1{
-font-size:42px;
 color:white;
-margin-bottom:15px;
+
+transform: translateY(0);
+transition: 0.3s ease;
 }
 
-/* TEXTO */
+.card:hover{
+transform: translateY(-4px);
+}
+
+/* título más elegante */
+h1{
+font-size:32px;
+margin-bottom:10px;
+letter-spacing:0.5px;
+}
+
+/* subtítulo mejorado */
 p{
 color:#cbd5e1;
-margin-bottom:25px;
-line-height:1.6;
+margin-bottom:22px;
+line-height:1.5;
+font-size:14px;
 }
 
-/* INPUT */
+/* input estilo moderno */
 input{
 width:100%;
-padding:15px;
+padding:14px;
+
 border:none;
-border-radius:10px;
-margin-bottom:15px;
-font-size:16px;
+border-radius:12px;
+
+margin-bottom:12px;
+
+font-size:14px;
 outline:none;
+
+background:rgba(255,255,255,0.95);
 }
 
-/* BOTÓN */
+/* botón más premium */
 button{
 width:100%;
-padding:15px;
-background:#6366f1;
-color:white;
+padding:14px;
+
 border:none;
-border-radius:10px;
-font-size:16px;
+border-radius:12px;
+
+background:linear-gradient(135deg,#6366f1,#4f46e5);
+
+color:white;
+font-weight:600;
+font-size:14px;
+
 cursor:pointer;
-font-weight:bold;
-transition:0.3s;
+
+transition:0.25s;
 }
 
 button:hover{
-background:#4f46e5;
-transform:translateY(-2px);
+transform:scale(1.03);
+box-shadow:0 10px 25px rgba(99,102,241,0.4);
 }
 
-/* MENSAJE */
+/* mensaje */
 #message{
-margin-top:15px;
+margin-top:12px;
+font-size:13px;
 color:#22c55e;
-font-weight:bold;
 }
 
-/* FEATURES */
+/* features más limpias */
 .features{
-margin-top:25px;
+margin-top:18px;
 list-style:none;
 text-align:left;
+padding-left:5px;
 }
 
 .features li{
-color:#e5e7eb;
-margin-bottom:8px;
-font-size:14px;
+color:#e2e8f0;
+margin-bottom:6px;
+font-size:13px;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+/* pequeños “checks” visuales */
+.features li::before{
+content:"✓";
+color:#a5b4fc;
+font-weight:bold;
 }
